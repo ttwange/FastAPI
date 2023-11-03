@@ -18,7 +18,7 @@ def get_posts():
   return {"data":"Number of posts"}
 
 @app.post("/createposts")
-def create_posts(payload: dict = Body(...)):
-  print(payload)
-  return {"New_content" : f"title: {payload['title']} and the content: {payload['content']}"}
+def create_posts(new_post = Post):
+  print(new_post)
+  return {"data" : "new post"}
 
