@@ -5,9 +5,9 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-# class Post(BaseModel):
-#   title:
-#   content:
+class Post(BaseModel):
+  title: str
+  content: str
 
 @app.get("/")
 def root():
