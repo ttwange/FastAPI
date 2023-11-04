@@ -18,6 +18,11 @@ my_posts = [{"title": "title1","content":"content 1", "id":1},{"title": "title2"
 def root():
   return {"Message": "thon"}
 
+def find_post(id):
+  for p in my_posts:
+    if p['id'] == id:
+      return p
+
 @app.get("/posts")
 def get_posts():
   return {"data":my_posts}
@@ -31,5 +36,6 @@ def create_posts(post : Post):
 
 @app.get("/posts/{id}")
 def get_post(id):
-  print(id)
+  post = find_post(int(id))
+  print(post)
   return {"post_detail": f"Here is post {id}"} 
