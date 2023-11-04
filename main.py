@@ -22,7 +22,7 @@ def find_post(id):
   for p in my_posts:
     if p['id'] == id:
       return p
-
+    
 def find_index_post(id):
   for i, p in enumerate(my_posts):
     if p['id'] == id:
@@ -46,5 +46,8 @@ def get_post(id: int):
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Post with id: {id} not found")
   return {"post_detail": post} 
 
-@app.delete("/posts/{id}")
+@app.delete("/posts/{id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_post(id : int):
+  index = find_index_post(id)
+  del my_posts[index]
+  return {"message":"Deleted successfully"}
